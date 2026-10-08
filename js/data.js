@@ -8,18 +8,19 @@ const DATA = {
   profile: {
     name: "전민영",
     nameEn: "Minyeong Jeon",
-    tagline: "데이터 속에서 질문을 찾고, 연구로 답하는 AI 연구자",   // 1줄 소개 (임시)
+    tagline: "AI와 사람, 두 영역을 잇다",                    // 1줄 소개
     intro: [                              // 1~2줄 소개 (임시 문구, 자유롭게 수정)
       "논문을 쓰며 배운 '끝까지 파고드는 힘'과, 팀 프로젝트에서 배운 '함께 만드는 힘'을 모두 가진 사람입니다.",
       "모델의 성능 숫자보다, 그 숫자가 사람에게 어떤 의미인지 설명할 수 있는 연구자가 되고 싶습니다."
     ],
     email: "mym0314@knu.ac.kr",
-    github: "https://github.com/minyeong-job-portfolio",
+    github: "",                                // 사용 안 함 (연구실 링크로 대체)
+    lab: { name: "KNU AIR Lab", url: "https://sites.google.com/view/knuairlab/air" },  // 연구실 홈페이지
     linkedin: "",                              // 없으면 빈 문자열
     resume: "",                                // 예: "assets/files/resume.pdf"
     location: "Daegu, Korea",
     photo: "",                                 // 예: "assets/img/profile.jpg" (없으면 이니셜 표시)
-    roles: ["AI Researcher", "Paper Author", "Problem Solver", "Team Player"] // 히어로에서 돌아가는 문구
+    roles: ["AI Researcher", "Problem Solver", "Team Player"] // 히어로에서 돌아가는 문구
   },
 
   /* ---------- 히어로 영역의 작은 스티커들 ---------- */
@@ -54,7 +55,7 @@ const DATA = {
     {
       group: "Languages",
       color: "sky",
-      items: ["Python", "C", "TypeScript", "JavaScript", "SQL"]
+      items: ["Python", "C", "TypeScript", "JavaScript", "SQL", "HTML", "CSS"]
     },
     {
       group: "AI / ML",
@@ -62,9 +63,9 @@ const DATA = {
       items: ["PyTorch", "TensorFlow", "scikit-learn", "Hugging Face", "NumPy", "Pandas", "OpenCV"]
     },
     {
-      group: "Tools",
+      group: "Frameworks / Tools",
       color: "mint",
-      items: ["Git", "GitHub", "Docker", "Linux", "LaTeX", "Jupyter", "Figma"]
+      items: ["React", "Vite", "FastAPI", "Git", "GitHub", "Docker", "Linux", "LaTeX", "Jupyter", "Figma"]
     },
     {
       group: "Collaboration",

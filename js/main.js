@@ -6,6 +6,8 @@
   const $ = (sel, root = document) => root.querySelector(sel);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const P = DATA.profile;
+  /* 연구실 링크 아이콘 (brain-circuit, Lucide / ISC) */
+  const LAB_ICON = `<svg class="icon-lab" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M9 13a4.5 4.5 0 0 0 3-4"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M12 13h4"/><path d="M12 18h6a2 2 0 0 1 2 2v1"/><path d="M12 8h8"/><path d="M16 8V5a2 2 0 0 1 2-2"/><circle cx="16" cy="13" r=".5"/><circle cx="18" cy="3" r=".5"/><circle cx="20" cy="21" r=".5"/><circle cx="20" cy="8" r=".5"/></svg>`;
 
   /* ---------- 기본 정보 ---------- */
   document.title = `${P.name} | Portfolio`;
@@ -49,6 +51,7 @@
   if (P.location) meta.push(`<li>📍 ${esc(P.location)}</li>`);
   if (P.email) meta.push(`<li>✉️ <a href="mailto:${esc(P.email)}">${esc(P.email)}</a></li>`);
   if (P.github) meta.push(`<li>🐙 <a href="${esc(P.github)}" target="_blank" rel="noopener">GitHub</a></li>`);
+  if (P.lab && P.lab.url) meta.push(`<li>${LAB_ICON} <a href="${esc(P.lab.url)}" target="_blank" rel="noopener">${esc(P.lab.name || "Lab")}</a></li>`);
   if (P.linkedin) meta.push(`<li>💼 <a href="${esc(P.linkedin)}" target="_blank" rel="noopener">LinkedIn</a></li>`);
   if (P.resume) meta.push(`<li>📎 <a href="${esc(P.resume)}" target="_blank" rel="noopener">이력서 (PDF)</a></li>`);
   $("#aboutMeta").innerHTML = meta.join("");
@@ -72,7 +75,7 @@
   $("#skillsGrid").innerHTML = (DATA.skills || [])
     .map((g, i) => `
       <div class="card skill-card card-${esc(g.color || "cream")} reveal" data-delay="${(i % 4) + 1}">
-        <h3 class="card-title">${esc(g.group)} <span class="skill-count">${g.items.length}</span></h3>
+        <h3 class="card-title">${esc(g.group)}</h3>
         <div class="skill-tags">${g.items.map((s) => `<span class="skill-tag">${esc(s)}</span>`).join("")}</div>
       </div>`)
     .join("");
@@ -117,6 +120,7 @@
   const cl = [];
   if (P.email) cl.push(`<a class="btn btn-accent" href="mailto:${esc(P.email)}">✉️ 메일 보내기</a>`);
   if (P.github) cl.push(`<a class="btn btn-ghost" href="${esc(P.github)}" target="_blank" rel="noopener">GitHub ↗</a>`);
+  if (P.lab && P.lab.url) cl.push(`<a class="btn btn-ghost" href="${esc(P.lab.url)}" target="_blank" rel="noopener">${LAB_ICON} ${esc(P.lab.name || "Lab")} ↗</a>`);
   if (P.linkedin) cl.push(`<a class="btn btn-ghost" href="${esc(P.linkedin)}" target="_blank" rel="noopener">LinkedIn ↗</a>`);
   if (P.resume) cl.push(`<a class="btn btn-ghost" href="${esc(P.resume)}" target="_blank" rel="noopener">이력서 다운로드</a>`);
   $("#contactLinks").innerHTML = cl.join("");
