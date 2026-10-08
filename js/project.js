@@ -24,7 +24,6 @@
 
   document.title = `${p.title} | ${P.name}`;
   const typeLabel = { paper: "📄 Paper", project: "🛠️ Project" };
-  const prev = projects[idx - 1], next = projects[idx + 1];
 
   const paragraphs = p.detail && p.detail.length ? p.detail : [p.summary];
 
@@ -51,12 +50,7 @@
 
     ${p.links && p.links.length ? `
       <h2 class="detail-sub">링크</h2>
-      <div class="project-links">${p.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
-
-    <nav class="detail-nav" aria-label="이전/다음 프로젝트">
-      ${prev ? `<a class="detail-nav-link prev" href="project.html?id=${encodeURIComponent(prev.id)}"><span>← 이전</span><strong>${esc(prev.title)}</strong></a>` : "<span></span>"}
-      ${next ? `<a class="detail-nav-link next" href="project.html?id=${encodeURIComponent(next.id)}"><span>다음 →</span><strong>${esc(next.title)}</strong></a>` : "<span></span>"}
-    </nav>`;
+      <div class="project-links">${p.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}`;
 
   /* 모바일 메뉴 */
   const burger = $("#navBurger"), links = $(".nav-links");
