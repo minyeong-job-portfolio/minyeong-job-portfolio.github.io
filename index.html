@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Portfolio</title>
+  <meta name="description" content="AI 연구와 협업을 함께 담은 포트폴리오" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23FFBE91'/><circle cx='50' cy='50' r='22' fill='%23E11A45'/></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <div class="bg" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+    <span class="blob blob-4"></span>
+  </div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav-wrap">
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="#top" class="nav-logo" id="navLogo"><span class="nav-dot"></span><span id="navName">Portfolio</span></a>
+      <ul class="nav-links">
+        <li><a href="#about" data-nav="about">About</a></li>
+        <li><a href="#skills" data-nav="skills">Skills</a></li>
+        <li><a href="#projects" data-nav="projects">Projects</a></li>
+        <li><a href="#contact" data-nav="contact">Contact</a></li>
+      </ul>
+      <a class="btn btn-sm btn-accent" id="navResume" href="#contact">Contact me</a>
+      <button class="nav-burger" id="navBurger" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="hero-hello reveal">안녕하세요 👋</p>
+          <h1 class="hero-title reveal">
+            <span class="line"><span class="roles"><span class="roles-inner" id="roleRotator"></span></span></span>
+            <span class="line"><span class="mark mark-sky" id="heroName">이름</span>입니다.</span>
+          </h1>
+          <p class="hero-tagline reveal" id="heroTagline"></p>
+          <div class="hero-cta reveal">
+            <a href="#projects" class="btn btn-accent">프로젝트 보기 <span class="arrow">→</span></a>
+            <a href="#about" class="btn btn-ghost">저에 대해 더 알기</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="avatar-card tilt" id="avatarCard">
+            <div class="avatar" id="avatar"></div>
+            <div class="avatar-ring"></div>
+          </div>
+          <div class="stickers" id="stickers"></div>
+        </div>
+      </div>
+      <a href="#about" class="scroll-hint" aria-label="아래로 스크롤"><span></span></a>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow eyebrow-sky">About me</span>
+          <h2>조금 더 <span class="mark mark-peach">가까이</span> 소개할게요</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-intro card card-cream reveal">
+            <div class="about-intro-text" id="aboutIntro"></div>
+            <ul class="about-meta" id="aboutMeta"></ul>
+          </div>
+
+          <div class="card card-sky reveal">
+            <h3 class="card-title">🎓 Education</h3>
+            <ul class="timeline" id="educationList"></ul>
+          </div>
+
+          <div class="card card-mint reveal">
+            <h3 class="card-title">📜 Certificates</h3>
+            <ul class="plain-list" id="certList"></ul>
+          </div>
+
+          <div class="card card-pink reveal">
+            <h3 class="card-title">🌍 Languages</h3>
+            <ul class="plain-list" id="langList"></ul>
+          </div>
+
+          <div class="card card-peach reveal" id="awardsCard">
+            <h3 class="card-title">🏆 Awards</h3>
+            <ul class="plain-list" id="awardList"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow eyebrow-mint">Skills</span>
+          <h2>이런 <span class="mark mark-mint">도구</span>들을 다뤄요</h2>
+        </div>
+        <div class="skills-grid" id="skillsGrid"></div>
+      </div>
+      <div class="marquee reveal" aria-hidden="true">
+        <div class="marquee-track" id="marqueeTrack"></div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow eyebrow-pink">Projects</span>
+          <h2>연구와 <span class="mark mark-pink">협업</span>의 기록</h2>
+          <div class="filters" id="filters" role="tablist">
+            <button class="chip is-active" data-filter="all" role="tab">전체</button>
+            <button class="chip" data-filter="paper" role="tab">📄 논문</button>
+            <button class="chip" data-filter="project" role="tab">🛠️ 프로젝트</button>
+          </div>
+        </div>
+
+        <div class="featured-grid" id="featuredGrid"></div>
+        <div class="projects-grid" id="projectsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <span class="eyebrow eyebrow-peach">Contact</span>
+          <h2>함께 이야기 나눠요 <span class="wave">💬</span></h2>
+          <p>연구, 협업, 채용 어떤 주제든 환영합니다.<br />메일 주시면 빠르게 답장드릴게요.</p>
+          <div class="contact-links" id="contactLinks"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> <span id="footerName"></span>. Made with 🧡 and pastel colors.</p>
+      <a href="#top" class="to-top" aria-label="맨 위로">↑</a>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
