@@ -14,8 +14,6 @@
   $("#navName").textContent = P.nameEn || P.name;
   $("#heroName").textContent = P.name;
   $("#heroTagline").textContent = P.tagline;
-  $("#footerName").textContent = P.nameEn || P.name;
-  $("#year").textContent = new Date().getFullYear();
 
   const avatar = $("#avatar");
   if (P.photo) avatar.innerHTML = `<img src="${esc(P.photo)}" alt="${esc(P.name)} 프로필 사진" />`;
@@ -48,8 +46,8 @@
   /* ---------- About ---------- */
   $("#aboutIntro").innerHTML = (P.intro || []).map((t) => `<p>${esc(t)}</p>`).join("");
   const meta = [];
-  if (P.location) meta.push(`<li>📍 ${esc(P.location)}</li>`);
   if (P.email) meta.push(`<li>✉️ <a href="mailto:${esc(P.email)}">${esc(P.email)}</a></li>`);
+  if (P.birth) meta.push(`<li>🎂 ${esc(P.birth)}</li>`);
   if (P.github) meta.push(`<li>🐙 <a href="${esc(P.github)}" target="_blank" rel="noopener">GitHub</a></li>`);
   if (P.lab && P.lab.url) meta.push(`<li>${LAB_ICON} <a href="${esc(P.lab.url)}" target="_blank" rel="noopener">${esc(P.lab.name || "Lab")}</a></li>`);
   if (P.linkedin) meta.push(`<li>💼 <a href="${esc(P.linkedin)}" target="_blank" rel="noopener">LinkedIn</a></li>`);
@@ -98,6 +96,11 @@
       ${p.highlights && p.highlights.length ? `<ul class="project-highlights">${p.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>` : ""}
       ${p.tags && p.tags.length ? `<div class="project-tags">${p.tags.map((t) => `<span class="project-tag">#${esc(t)}</span>`).join("")}</div>` : ""}
       ${p.links && p.links.length ? `<div class="project-links">${p.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
+      <a class="project-overlay" href="project.html?id=${encodeURIComponent(p.id || "")}" aria-label="${esc(p.title)} 상세 보기">
+        <span class="project-overlay-type">${typeLabel[p.type] || esc(p.type)}</span>
+        <span class="project-overlay-title">${esc(p.title)}</span>
+        <span class="project-overlay-cta">자세히 보기 →</span>
+      </a>
     </article>`;
 
   const projects = DATA.projects || [];

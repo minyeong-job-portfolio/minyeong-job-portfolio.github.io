@@ -18,7 +18,7 @@ const DATA = {
     lab: { name: "KNU AIR Lab", url: "https://sites.google.com/view/knuairlab/air" },  // 연구실 홈페이지
     linkedin: "",                              // 없으면 빈 문자열
     resume: "",                                // 예: "assets/files/resume.pdf"
-    location: "Daegu, Korea",
+    birth: "2002.03.14",                       // 생년월일
     photo: "",                                 // 예: "assets/img/profile.jpg" (없으면 이니셜 표시)
     roles: ["AI Researcher", "Problem Solver", "Team Player"] // 히어로에서 돌아가는 문구
   },
@@ -75,12 +75,16 @@ const DATA = {
   ],
 
   /* ---------- Projects ----------
+     id: 상세 페이지 주소에 쓰이는 고유 이름 (영문, 중복 금지) → project.html?id=...
      type: "paper" (논문) | "project" (프로젝트)
      featured: true 이면 상단 큰 카드로 표시
      color: sky | peach | orange | pink | mint | olive | taupe | cream
+     detail: 상세 페이지에만 보여줄 문단 목록. 비워두면 summary 만 표시
+     images: 상세 페이지에 보여줄 이미지 경로 목록. 예: ["assets/img/paper1-fig1.png"]
   ---------------------------------- */
   projects: [
     {
+      id: "paper-1",
       type: "paper",
       featured: true,
       color: "sky",
@@ -98,9 +102,12 @@ const DATA = {
       links: [
         { label: "Paper", url: "#" },
         { label: "GitHub", url: "#" }
-      ]
+      ],
+      detail: [],
+      images: []
     },
     {
+      id: "paper-2",
       type: "paper",
       featured: true,
       color: "pink",
@@ -111,9 +118,12 @@ const DATA = {
       summary: "논문 요약을 적어 주세요.",
       highlights: ["담당한 역할 1", "담당한 역할 2"],
       tags: ["NLP", "Transformer"],
-      links: [{ label: "Paper", url: "#" }]
+      links: [{ label: "Paper", url: "#" }],
+      detail: [],
+      images: []
     },
     {
+      id: "capstone",
       type: "project",
       featured: false,
       color: "mint",
@@ -124,9 +134,12 @@ const DATA = {
       summary: "팀원 간 역할 조율, 주간 회의 진행, 발표 담당. 기술적으로는 모델 학습 파이프라인을 설계했습니다.",
       highlights: ["주간 스프린트 운영 및 회의록 관리", "최종 발표 담당"],
       tags: ["협업", "커뮤니케이션", "Python"],
-      links: [{ label: "GitHub", url: "#" }]
+      links: [{ label: "GitHub", url: "#" }],
+      detail: [],
+      images: []
     },
     {
+      id: "web-service",
       type: "project",
       featured: false,
       color: "peach",
@@ -137,9 +150,12 @@ const DATA = {
       summary: "TypeScript와 React로 사용자 화면을 구현하고, 백엔드 팀과 API 명세를 함께 설계했습니다.",
       highlights: ["API 명세 문서화", "디자이너와 협업해 UI 개선"],
       tags: ["TypeScript", "React", "협업"],
-      links: [{ label: "GitHub", url: "#" }, { label: "Demo", url: "#" }]
+      links: [{ label: "GitHub", url: "#" }, { label: "Demo", url: "#" }],
+      detail: [],
+      images: []
     },
     {
+      id: "data-contest",
       type: "project",
       featured: false,
       color: "orange",
@@ -150,7 +166,9 @@ const DATA = {
       summary: "공공 데이터를 분석하고 인사이트를 시각화해 발표했습니다.",
       highlights: ["EDA 및 시각화 리포트 작성"],
       tags: ["Pandas", "시각화", "발표"],
-      links: []
+      links: [],
+      detail: [],
+      images: []
     }
   ]
 };
