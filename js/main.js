@@ -84,16 +84,14 @@
 
   /* ---------- Projects ---------- */
   const typeLabel = { paper: "📄 Paper", project: "🛠️ Project" };
-  const projectCard = (p, featured, i) => `
-    <article class="card project ${featured ? "project-featured tilt" : ""} bg-${esc(p.color || "cream")} reveal" data-type="${esc(p.type)}" data-delay="${(i % 3) + 1}">
+  const projectCard = (p, i) => `
+    <article class="card project bg-${esc(p.color || "cream")} reveal" data-type="${esc(p.type)}" data-delay="${(i % 2) + 1}">
       <div class="project-head">
         <span class="project-type ${esc(p.type)}">${typeLabel[p.type] || esc(p.type)}</span>
         <span class="project-period">${esc(p.period)}</span>
       </div>
       <h3 class="project-title">${esc(p.title)}</h3>
       <div class="project-venue">${esc(p.venue)}${p.role ? `<span class="role">${esc(p.role)}</span>` : ""}</div>
-      <p class="project-summary">${esc(p.summary)}</p>
-      ${p.highlights && p.highlights.length ? `<ul class="project-highlights">${p.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>` : ""}
       ${p.tags && p.tags.length ? `<div class="project-tags">${p.tags.map((t) => `<span class="project-tag">#${esc(t)}</span>`).join("")}</div>` : ""}
       ${p.links && p.links.length ? `<div class="project-links">${p.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
       <a class="project-overlay" href="project.html?id=${encodeURIComponent(p.id || "")}" aria-label="${esc(p.title)} 상세 보기">
@@ -104,8 +102,7 @@
     </article>`;
 
   const projects = DATA.projects || [];
-  $("#featuredGrid").innerHTML = projects.filter((p) => p.featured).map((p, i) => projectCard(p, true, i)).join("");
-  $("#projectsGrid").innerHTML = projects.filter((p) => !p.featured).map((p, i) => projectCard(p, false, i)).join("");
+  $("#projectsGrid").innerHTML = projects.map((p, i) => projectCard(p, i)).join("");
 
   $("#filters").addEventListener("click", (e) => {
     const btn = e.target.closest("[data-filter]");
