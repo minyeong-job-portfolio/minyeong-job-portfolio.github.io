@@ -25,7 +25,7 @@
   document.title = `${p.title} | ${P.name}`;
   const typeLabel = { paper: "📄 Paper", project: "🛠️ Project" };
 
-  const imgs = (p.images || []).map((im) => (typeof im === "string" ? { src: im, caption: "" } : im)).filter((im) => im && im.src);
+  const imgs = (p.images || []).map((im) => (typeof im === "string" ? { src: im } : im)).filter((im) => im && im.src);
   const stats = p.stats || [];
   const sections = p.sections && p.sections.length ? p.sections : (p.detail && p.detail.length ? p.detail.map((t) => ({ text: t })) : []);
 
@@ -43,12 +43,10 @@
       <span class="project-period">${esc(p.period)}</span>
     </div>
     <h1 class="detail-title">${esc(p.title)}</h1>
-    ${imgs.length ? `
-      <figure class="detail-hero">
-        <img src="${esc(imgs[0].src)}" alt="${esc(imgs[0].caption || p.title + " 아키텍처")}" />
-      </figure>` : ""}
     ${p.subtitle ? `<p class="detail-subtitle">${esc(p.subtitle)}</p>` : ""}
-    <div class="project-venue">${esc(p.venue)}${p.role ? `<span class="role">${esc(p.role)}</span>` : ""}</div>
+    <div class="project-venue">${esc(p.venue)}</div>
+    ${imgs.length ? `<figure class="detail-hero"><img src="${esc(imgs[0].src)}" alt="${esc(p.title)} 아키텍처" /></figure>` : ""}
+
 
     <div class="detail-summary">${(Array.isArray(p.summary) ? p.summary : [p.summary]).filter(Boolean).map((t) => `<p>${esc(t)}</p>`).join("")}</div>
 
@@ -62,7 +60,7 @@
     ${sections.map(sectionHTML).join("")}
 
     ${imgs.length > 1 ? `<div class="detail-images">${imgs.slice(1).map((im) => `
-      <figure><img src="${esc(im.src)}" alt="${esc(im.caption || p.title)}" loading="lazy" /></figure>`).join("")}</div>` : ""}
+      <figure><img src="${esc(im.src)}" alt="${esc(p.title)}" loading="lazy" /></figure>`).join("")}</div>` : ""}
 
     ${p.links && p.links.length ? `
       <h2 class="detail-sub">링크</h2>

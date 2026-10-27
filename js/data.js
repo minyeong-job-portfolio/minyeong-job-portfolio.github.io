@@ -82,7 +82,7 @@ const DATA = {
      summary: 상세 페이지 그림 아래 본문. 문자열 하나 또는 문단별 문자열 배열
      highlights: 카드에 ✦ 로 표시되는 핵심 성과
      images: 상세 페이지 상단에 보여줄 이미지. 첫 번째가 아키텍처 그림.
-             { src: "assets/img/파일명.png", caption: "설명" } 형식
+             { src: "assets/img/파일명.png" } 형식
      stats: 상세 페이지의 큰 숫자 타일. { value, label, sub } 형식
      sections: 상세 페이지 하단 섹션. { heading, text } 또는 { heading, items: [...] } 형식
   ---------------------------------- */
@@ -112,7 +112,7 @@ const DATA = {
         { label: "Paper", url: "https://ieeexplore.ieee.org/document/11393620" }
       ],
       images: [
-        { src: "assets/img/rpm-architecture.png", caption: "RPM 구조 — LR MS + PAN → Space-to-Depth → Conv ResBlock + Self-Attention → Depth-to-Space → HR MS (C = 128)" }
+        { src: "assets/img/rpm-architecture.png" }
       ],
       stats: [
         { value: "0.003 s", label: "256×256 패치 추론 시간", sub: "RTX 4090 · 0.021 TFLOPs" },
@@ -121,17 +121,13 @@ const DATA = {
       ],
       sections: [
         {
-          heading: "AI와 사람 사이에서",
-          text: "3ms 추론과 0.021 TFLOPs라는 숫자는 '탑재 연산 · 전력 · 다운링크 자원이 제한된 초소형 군집위성에서도 실제로 돌아간다'는 뜻입니다. 저복잡도라는 KARI의 요구를 제약이 아닌 설계 조건으로 받아들였고, 정합된 정답 영상이 없는 현실의 데이터 조건을 그대로 학습 전략에 녹였습니다. 좋은 모델은 벤치마크 위에서만이 아니라 실제 센서와 운영 환경의 조건 안에서 작동해야 한다고 생각합니다."
-        },
-        {
           heading: "주요 수행 업무",
           items: [
             "Shift-to-Align 학습 전략 설계 및 PyTorch 구현",
             "유효 영역 마스킹 · Edge 일관성 손실 설계",
             "WorldView-3 · GaoFen-2 · QuickBird 3개 벤치마크 및 Pavia 교차 데이터셋 실험",
             "Ablation 실험 — S2A 제거 · Edge 손실 제거 · 이동 범위(±1/±2/±3) · 확률 스케줄(선형/코사인/지수/계단) 비교",
-            "논문 작성(공동 제1저자) · 코드 공개(AIRlab-KNU/RPM)"
+            "논문 작성(공동 제1저자)"
           ]
         }
       ]
@@ -161,7 +157,7 @@ const DATA = {
         { label: "Paper", url: "https://ieeexplore.ieee.org/document/11222869" }
       ],
       images: [
-        { src: "assets/img/u-set-architecture.png", caption: "U-SET 구조 — SCD(SAR→RGB) · SND(SAR→NIR) 네트워크 + 공유 Sharpening 모듈, Certainty Mask + 적대 손실로 학습" }
+        { src: "assets/img/u-set-architecture.png" }
       ],
       stats: [
         { value: "+0.75 dB", label: "PSNR 향상", sub: "KOMPSAT · 이전 SOTA 대비" },
@@ -169,10 +165,6 @@ const DATA = {
         { value: "94.1", label: "FID · 확신도 손실 제거 시", sub: "67.5 → 94.1로 급락" }
       ],
       sections: [
-        {
-          heading: "AI와 사람 사이에서",
-          text: "결과와 함께 '어디를 못 믿을지'를 내보내는 AI입니다. 확신도 맵은 검수 우선순위, 재촬영 · 재처리 판단, 자동 처리 여부 결정 같은 운영 신호로 바로 쓸 수 있습니다. 사람이 AI의 결과를 믿고 쓰려면 성능 수치만이 아니라 모델이 스스로 어디서 어려워하는지를 함께 보여줘야 한다고 생각합니다."
-        },
         {
           heading: "주요 수행 업무",
           items: [
@@ -208,7 +200,7 @@ const DATA = {
       tags: ["Super-Resolution", "INR", "Aerial Imagery", "Object Detection", "PyTorch"],
       links: [],
       images: [
-        { src: "assets/img/la-inr-architecture.png", caption: "LA-INR 개요 — (a) 백본 + INR 디코더가 RGB와 분산 맵을 동시 예측 (b) PVM (c) PVR: 고분산 영역 우선 학습" }
+        { src: "assets/img/la-inr-architecture.png" }
       ],
       stats: [
         { value: "58.87 → 63.25", label: "RetinaNet mAP50", sub: "DOTA ×4 · HR 상한 63.30에 근접" },
@@ -216,10 +208,6 @@ const DATA = {
         { value: "3 → 6ch", label: "디코더 마지막 층 확장", sub: "RGB 평균 μ + 로그분산 s 동시 예측" }
       ],
       sections: [
-        {
-          heading: "AI와 사람 사이에서",
-          text: "검출기 재학습 없이(frozen) 성능이 회복되므로 기존 시스템 앞단에 전처리 모듈로 붙일 수 있습니다. '모델 지표(PSNR)가 아니라 업무 지표(탐지율)로 평가한다'는 원칙을 논문 실험 설계에 그대로 넣었습니다. AI의 성과는 결국 그것을 쓰는 사람의 일이 얼마나 나아졌는지로 측정돼야 한다고 생각합니다."
-        },
         {
           heading: "주요 수행 업무",
           items: [
